@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 通配符：LIKE | SQL Learning Note</title>
+  <title>第 5 章 通配符：LIKE | MySQL 学习笔记</title>
   <meta name="description" content="This is a notebook for learning SQL with MySQL." />
   <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 通配符：LIKE | SQL Learning Note" />
+  <meta property="og:title" content="第 5 章 通配符：LIKE | MySQL 学习笔记" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a notebook for learning SQL with MySQL." />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 通配符：LIKE | SQL Learning Note" />
+  <meta name="twitter:title" content="第 5 章 通配符：LIKE | MySQL 学习笔记" />
   
   <meta name="twitter:description" content="This is a notebook for learning SQL with MySQL." />
   
@@ -30,7 +30,7 @@
   
   
 <link rel="prev" href="过滤where.html"/>
-
+<link rel="next" href="计算字段.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -135,15 +135,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
+<li><a href="./">MySQL 学习笔记</a></li>
+
+<li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 基础</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#参考"><i class="fa fa-check"></i><b>1.1</b> 参考</a></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="检索-select.html"><a href="检索-select.html"><i class="fa fa-check"></i><b>2</b> 检索: SELECT</a>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#参考"><i class="fa fa-check"></i><b>1.1</b> 参考</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="检索-select.html"><a href="检索-select.html#distinct"><i class="fa fa-check"></i><b>2.1</b> DISTINCT</a></li>
-<li class="chapter" data-level="2.2" data-path="检索-select.html"><a href="检索-select.html#limit"><i class="fa fa-check"></i><b>2.2</b> LIMIT</a></li>
-<li class="chapter" data-level="2.3" data-path="检索-select.html"><a href="检索-select.html#练习"><i class="fa fa-check"></i><b>2.3</b> 练习</a></li>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#asdf"><i class="fa fa-check"></i><b>1.1.1</b> asdf</a></li>
+<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#asdfadsf"><i class="fa fa-check"></i><b>1.1.2</b> asdfadsf</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="检索select.html"><a href="检索select.html"><i class="fa fa-check"></i><b>2</b> 检索：SELECT</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="检索select.html"><a href="检索select.html#distinct"><i class="fa fa-check"></i><b>2.1</b> DISTINCT</a></li>
+<li class="chapter" data-level="2.2" data-path="检索select.html"><a href="检索select.html#limit"><i class="fa fa-check"></i><b>2.2</b> LIMIT</a></li>
+<li class="chapter" data-level="2.3" data-path="检索select.html"><a href="检索select.html#练习"><i class="fa fa-check"></i><b>2.3</b> 练习</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="排序order-by.html"><a href="排序order-by.html"><i class="fa fa-check"></i><b>3</b> 排序：ORDER BY</a>
 <ul>
@@ -156,7 +163,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2" data-path="过滤where.html"><a href="过滤where.html#高级过滤"><i class="fa fa-check"></i><b>4.2</b> 高级过滤</a></li>
 <li class="chapter" data-level="4.3" data-path="过滤where.html"><a href="过滤where.html#练习-2"><i class="fa fa-check"></i><b>4.3</b> 练习</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="通配符like.html"><a href="通配符like.html"><i class="fa fa-check"></i><b>5</b> 通配符：LIKE</a></li>
+<li class="chapter" data-level="5" data-path="通配符like.html"><a href="通配符like.html"><i class="fa fa-check"></i><b>5</b> 通配符：LIKE</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="通配符like.html"><a href="通配符like.html#section"><i class="fa fa-check"></i><b>5.1</b> %</a></li>
+<li class="chapter" data-level="5.2" data-path="通配符like.html"><a href="通配符like.html#section-1"><i class="fa fa-check"></i><b>5.2</b> _</a></li>
+<li class="chapter" data-level="5.3" data-path="通配符like.html"><a href="通配符like.html#section-2"><i class="fa fa-check"></i><b>5.3</b> [ ]</a></li>
+<li class="chapter" data-level="5.4" data-path="通配符like.html"><a href="通配符like.html#练习-3"><i class="fa fa-check"></i><b>5.4</b> 练习</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="计算字段.html"><a href="计算字段.html"><i class="fa fa-check"></i><b>6</b> 计算字段</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="计算字段.html"><a href="计算字段.html#拼接concat"><i class="fa fa-check"></i><b>6.1</b> 拼接：Concat</a></li>
+<li class="chapter" data-level="6.2" data-path="计算字段.html"><a href="计算字段.html#算数计算"><i class="fa fa-check"></i><b>6.2</b> 算数计算</a></li>
+<li class="chapter" data-level="6.3" data-path="计算字段.html"><a href="计算字段.html#练习-4"><i class="fa fa-check"></i><b>6.3</b> 练习</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="函数.html"><a href="函数.html"><i class="fa fa-check"></i><b>7</b> 函数</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="函数.html"><a href="函数.html#常用函数"><i class="fa fa-check"></i><b>7.1</b> 常用函数</a></li>
+<li class="chapter" data-level="7.2" data-path="函数.html"><a href="函数.html#文本处理函数"><i class="fa fa-check"></i><b>7.2</b> 文本处理函数</a></li>
+<li class="chapter" data-level="7.3" data-path="函数.html"><a href="函数.html#日期和时间处理函数"><i class="fa fa-check"></i><b>7.3</b> 日期和时间处理函数</a></li>
+<li class="chapter" data-level="7.4" data-path="函数.html"><a href="函数.html#数值处理函数"><i class="fa fa-check"></i><b>7.4</b> 数值处理函数</a></li>
+<li class="chapter" data-level="7.5" data-path="函数.html"><a href="函数.html#练习-5"><i class="fa fa-check"></i><b>7.5</b> 练习</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="汇总.html"><a href="汇总.html"><i class="fa fa-check"></i><b>8</b> 汇总</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="汇总.html"><a href="汇总.html#聚集函数"><i class="fa fa-check"></i><b>8.1</b> 聚集函数</a></li>
+<li class="chapter" data-level="8.2" data-path="汇总.html"><a href="汇总.html#聚集不同值"><i class="fa fa-check"></i><b>8.2</b> 聚集不同值</a></li>
+<li class="chapter" data-level="8.3" data-path="汇总.html"><a href="汇总.html#组合运用"><i class="fa fa-check"></i><b>8.3</b> 组合运用</a></li>
+<li class="chapter" data-level="8.4" data-path="汇总.html"><a href="汇总.html#练习-6"><i class="fa fa-check"></i><b>8.4</b> 练习</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="汇总-1.html"><a href="汇总-1.html"><i class="fa fa-check"></i><b>9</b> 汇总</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="汇总-1.html"><a href="汇总-1.html#聚集函数-1"><i class="fa fa-check"></i><b>9.1</b> 聚集函数</a></li>
+<li class="chapter" data-level="9.2" data-path="汇总-1.html"><a href="汇总-1.html#聚集不同值-1"><i class="fa fa-check"></i><b>9.2</b> 聚集不同值</a></li>
+<li class="chapter" data-level="9.3" data-path="汇总-1.html"><a href="汇总-1.html#组合运用-1"><i class="fa fa-check"></i><b>9.3</b> 组合运用</a></li>
+<li class="chapter" data-level="9.4" data-path="汇总-1.html"><a href="汇总-1.html#练习-7"><i class="fa fa-check"></i><b>9.4</b> 练习</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -166,7 +207,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">SQL Learning Note</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">MySQL 学习笔记</a>
           </h1>
         </div>
 
@@ -175,44 +216,254 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="通配符like" class="section level1 hasAnchor" number="5">
-<h1><span class="header-section-number">Chapter 5</span> 通配符：LIKE<a href="通配符like.html#通配符like" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div class="sourceCode" id="cb35"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb35-1"><a href="通配符like.html#cb35-1" tabindex="-1"></a><span class="kw">SELECT</span> prod_name, prod_price</span>
-<span id="cb35-2"><a href="通配符like.html#cb35-2" tabindex="-1"></a><span class="kw">FROM</span> Products</span>
-<span id="cb35-3"><a href="通配符like.html#cb35-3" tabindex="-1"></a><span class="kw">WHERE</span> prod_price <span class="op">=</span> <span class="fl">3.49</span>;</span></code></pre></div>
+<h1><span class="header-section-number">第 5 章</span> 通配符：LIKE<a href="通配符like.html#通配符like" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>搜索可以是区分大小写的。</p>
+<div id="section" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> %<a href="通配符like.html#section" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p>% 表示任何字符出现任意次数。</p></li>
+<li><p>% 还能匹配 0 个字符。</p></li>
+<li><p><code>WHERE prod_name LIKE '%'</code> 不会匹配产品名称为 NULL 的行。</p></li>
+</ul>
+<div class="sourceCode" id="cb36"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb36-1"><a href="通配符like.html#cb36-1" tabindex="-1"></a><span class="kw">SELECT</span> prod_id, prod_name</span>
+<span id="cb36-2"><a href="通配符like.html#cb36-2" tabindex="-1"></a><span class="kw">FROM</span> Products</span>
+<span id="cb36-3"><a href="通配符like.html#cb36-3" tabindex="-1"></a><span class="kw">WHERE</span> prod_name <span class="kw">LIKE</span> <span class="st">&#39;Fish%&#39;</span>; <span class="co">-- Fish开头</span></span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-35">Table 5.1: </span>3 records</caption>
+<caption><span id="tab:unnamed-chunk-36">表 5.1: </span>1 records</caption>
+<thead>
+<tr class="header">
+<th align="left">prod_id</th>
+<th align="left">prod_name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">BNBG01</td>
+<td align="left">Fish bean bag toy</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb37-1"><a href="通配符like.html#cb37-1" tabindex="-1"></a><span class="kw">SELECT</span> prod_id, prod_name</span>
+<span id="cb37-2"><a href="通配符like.html#cb37-2" tabindex="-1"></a><span class="kw">FROM</span> Products</span>
+<span id="cb37-3"><a href="通配符like.html#cb37-3" tabindex="-1"></a><span class="kw">WHERE</span> prod_name <span class="kw">LIKE</span> <span class="st">&#39;%bean bag%&#39;</span>;</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-37">表 5.2: </span>3 records</caption>
+<thead>
+<tr class="header">
+<th align="left">prod_id</th>
+<th align="left">prod_name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">BNBG01</td>
+<td align="left">Fish bean bag toy</td>
+</tr>
+<tr class="even">
+<td align="left">BNBG02</td>
+<td align="left">Bird bean bag toy</td>
+</tr>
+<tr class="odd">
+<td align="left">BNBG03</td>
+<td align="left">Rabbit bean bag toy</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb38-1"><a href="通配符like.html#cb38-1" tabindex="-1"></a><span class="kw">SELECT</span> prod_name</span>
+<span id="cb38-2"><a href="通配符like.html#cb38-2" tabindex="-1"></a><span class="kw">FROM</span> Products</span>
+<span id="cb38-3"><a href="通配符like.html#cb38-3" tabindex="-1"></a><span class="kw">WHERE</span> prod_name <span class="kw">LIKE</span> <span class="st">&#39;F%y&#39;</span>;</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-38">表 5.3: </span>1 records</caption>
 <thead>
 <tr class="header">
 <th align="left">prod_name</th>
-<th align="right">prod_price</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td align="left">Fish bean bag toy</td>
-<td align="right">3.49</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="section-1" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> _<a href="通配符like.html#section-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>_ 只匹配单个字符。</li>
+</ul>
+<div class="sourceCode" id="cb39"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb39-1"><a href="通配符like.html#cb39-1" tabindex="-1"></a><span class="kw">SELECT</span> prod_id, prod_name</span>
+<span id="cb39-2"><a href="通配符like.html#cb39-2" tabindex="-1"></a><span class="kw">FROM</span> Products</span>
+<span id="cb39-3"><a href="通配符like.html#cb39-3" tabindex="-1"></a><span class="kw">WHERE</span> prod_name <span class="kw">LIKE</span> <span class="st">&#39;__ inch teddy bear&#39;</span>;</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-39">表 5.4: </span>2 records</caption>
+<thead>
+<tr class="header">
+<th align="left">prod_id</th>
+<th align="left">prod_name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">BR02</td>
+<td align="left">12 inch teddy bear</td>
+</tr>
+<tr class="even">
+<td align="left">BR03</td>
+<td align="left">18 inch teddy bear</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="section-2" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> [ ]<a href="通配符like.html#section-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>MySQL 不支持。</li>
+</ul>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-40">表 5.5: </span>0 records</caption>
+<thead>
+<tr class="header">
+<th align="left">cust_contact</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</div>
+</div>
+<div id="练习-3" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> 练习<a href="通配符like.html#练习-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>编写 SQL 语句，从 Products 表中检索产品名称（prod_name）和描述（prod_desc），仅返回描述中包含 toy 一词的产品。</li>
+</ol>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-41">表 5.6: </span>3 records</caption>
+<colgroup>
+<col width="22%" />
+<col width="77%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">prod_name</th>
+<th align="left">prod_desc</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Fish bean bag toy</td>
+<td align="left">Fish bean bag toy, complete with bean bag worms with which to feed it</td>
 </tr>
 <tr class="even">
 <td align="left">Bird bean bag toy</td>
-<td align="right">3.49</td>
+<td align="left">Bird bean bag toy, eggs are not included</td>
 </tr>
 <tr class="odd">
 <td align="left">Rabbit bean bag toy</td>
-<td align="right">3.49</td>
+<td align="left">Rabbit bean bag toy, comes with bean bag carrots</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ol start="2" style="list-style-type: decimal">
+<li>反过来再来一次。编写 SQL 语句，从 Products 表中检索产品名称（prod_name）和描述（prod_desc），仅返回描述中未出现 toy 一词的产品。这次，按产品名称对结果进行排序。</li>
+</ol>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-42">表 5.7: </span>6 records</caption>
+<thead>
+<tr class="header">
+<th align="left">prod_name</th>
+<th align="left">prod_desc</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">12 inch teddy bear</td>
+<td align="left">12 inch teddy bear, comes with cap and jacket</td>
+</tr>
+<tr class="even">
+<td align="left">18 inch teddy bear</td>
+<td align="left">18 inch teddy bear, comes with cap and jacket</td>
+</tr>
+<tr class="odd">
+<td align="left">8 inch teddy bear</td>
+<td align="left">8 inch teddy bear, comes with cap and jacket</td>
+</tr>
+<tr class="even">
+<td align="left">King doll</td>
+<td align="left">12 inch king doll with royal garments and crown</td>
+</tr>
+<tr class="odd">
+<td align="left">Queen doll</td>
+<td align="left">12 inch queen doll with royal garments and crown</td>
+</tr>
+<tr class="even">
+<td align="left">Raggedy Ann</td>
+<td align="left">18 inch Raggedy Ann doll</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ol start="3" style="list-style-type: decimal">
+<li>编写 SQL 语句，从 Products 表中检索产品名称（prod_name）和描述（prod_desc），仅返回描述中同时出现 toy 和 carrots 的产品。有好几种方法可以执行此操作，但对于这个挑战题，请使用 AND 和两个 LIKE 比较。</li>
+</ol>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-43">表 5.8: </span>1 records</caption>
+<thead>
+<tr class="header">
+<th align="left">prod_name</th>
+<th align="left">prod_desc</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Rabbit bean bag toy</td>
+<td align="left">Rabbit bean bag toy, comes with bean bag carrots</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ol start="4" style="list-style-type: decimal">
+<li>来个比较棘手的。我没有特别向你展示这个语法，而是想看看你根据目前已学的知识是否可以找到答案。编写 SQL 语句，从 Products 表中检索产品名称（prod_name）和描述（prod_desc），仅返回在描述中以先后顺序同时出现 toy 和 carrots 的产品。提示：只需要用带有三个 % 符号的 LIKE 即可。</li>
+</ol>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-44">表 5.9: </span>1 records</caption>
+<thead>
+<tr class="header">
+<th align="left">prod_name</th>
+<th align="left">prod_desc</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Rabbit bean bag toy</td>
+<td align="left">Rabbit bean bag toy, comes with bean bag carrots</td>
 </tr>
 </tbody>
 </table>
 </div>
 
 </div>
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="过滤where.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="过滤where.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="计算字段.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -227,9 +478,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
+"github": true,
+"facebook": false,
+"twitter": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
@@ -243,8 +494,8 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": null,
-"text": null
+"link": "https://github.com/WXYS1209/SQL_Note/04-通配符.Rmd",
+"text": "Edit"
 },
 "history": {
 "link": null,
@@ -260,7 +511,8 @@ gitbook.start({
 "options": null
 },
 "toc": {
-"collapse": "subsection"
+"collapse": "section",
+"scroll_highlight": true
 }
 });
 });

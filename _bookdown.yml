@@ -1,5 +1,7 @@
 delete_merged_file: true
 output_dir: "docs"
 language:
+  label:
+    tab: "表 "
   ui:
-    chapter_name: "Chapter "
+    chapter_name: ["第 ", " 章"]

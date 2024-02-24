@@ -1,4 +1,4 @@
-# 检索: SELECT
+# 检索：SELECT
 
 ```{sql, connection = conn}
 -- SELECT prod_name FROM PRODUCTS;

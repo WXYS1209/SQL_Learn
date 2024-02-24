@@ -1,13 +1,86 @@
 # 通配符：LIKE
 
+搜索可以是区分大小写的。
+
+## %
+
+- % 表示任何字符出现任意次数。
+
+- % 还能匹配 0 个字符。
+
+- `WHERE prod_name LIKE '%'` 不会匹配产品名称为 NULL 的行。
+
 ```{sql, connection = conn}
-SELECT prod_name, prod_price
+SELECT prod_id, prod_name
 FROM Products
-WHERE prod_price = 3.49;
+WHERE prod_name LIKE 'Fish%'; -- Fish开头
 ```
 
-```{r include=F}
-dbDisconnect(conn)
+```{sql, connection = conn}
+SELECT prod_id, prod_name
+FROM Products
+WHERE prod_name LIKE '%bean bag%';
 ```
 
+```{sql, connection = conn}
+SELECT prod_name
+FROM Products
+WHERE prod_name LIKE 'F%y';
+```
+
+## _
+
+- _ 只匹配单个字符。
+
+```{sql, connection = conn}
+SELECT prod_id, prod_name
+FROM Products
+WHERE prod_name LIKE '__ inch teddy bear';
+```
+
+## [ ]
+
+- MySQL 不支持。
+
+```{sql, connection = conn, echo=F}
+SELECT cust_contact
+FROM Customers
+WHERE cust_contact LIKE '[JM]%'
+ORDER BY cust_contact;
+```
+
+## 练习
+1. 编写 SQL 语句，从 Products 表中检索产品名称（prod_name）和描述（prod_desc），仅返回描述中包含 toy 一词的产品。
+
+```{sql, connection = conn, echo=F}
+SELECT prod_name, prod_desc
+FROM Products
+WHERE prod_desc LIKE "%toy%";
+```
+
+2. 反过来再来一次。编写 SQL 语句，从 Products 表中检索产品名称（prod_name）和描述（prod_desc），仅返回描述中未出现 toy 一词的产品。这次，按产品名称对结果进行排序。
+
+```{sql, connection = conn, echo=F}
+SELECT prod_name, prod_desc
+FROM Products
+WHERE prod_desc NOT LIKE "%toy%"
+ORDER BY prod_name;
+```
+
+3. 编写 SQL 语句，从 Products 表中检索产品名称（prod_name）和描述（prod_desc），仅返回描述中同时出现 toy 和 carrots 的产品。有好几种方法可以执行此操作，但对于这个挑战题，请使用 AND 和两个 LIKE 比较。
+
+```{sql, connection = conn, echo=F}
+SELECT prod_name, prod_desc
+FROM Products
+WHERE prod_desc LIKE "%toy%" AND
+  prod_desc LIKE "%carrots%";
+```
+
+4. 来个比较棘手的。我没有特别向你展示这个语法，而是想看看你根据目前已学的知识是否可以找到答案。编写 SQL 语句，从 Products 表中检索产品名称（prod_name）和描述（prod_desc），仅返回在描述中以先后顺序同时出现 toy 和 carrots 的产品。提示：只需要用带有三个 % 符号的 LIKE 即可。
+
+```{sql, connection = conn, echo=F}
+SELECT prod_name, prod_desc
+FROM Products
+WHERE prod_desc LIKE "%toy%carrots%";
+```
 

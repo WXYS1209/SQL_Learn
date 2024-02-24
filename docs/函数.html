@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>第 3 章 排序：ORDER BY | MySQL 学习笔记</title>
+  <title>第 7 章 函数 | MySQL 学习笔记</title>
   <meta name="description" content="This is a notebook for learning SQL with MySQL." />
   <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="第 3 章 排序：ORDER BY | MySQL 学习笔记" />
+  <meta property="og:title" content="第 7 章 函数 | MySQL 学习笔记" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a notebook for learning SQL with MySQL." />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="第 3 章 排序：ORDER BY | MySQL 学习笔记" />
+  <meta name="twitter:title" content="第 7 章 函数 | MySQL 学习笔记" />
   
   <meta name="twitter:description" content="This is a notebook for learning SQL with MySQL." />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="检索select.html"/>
-<link rel="next" href="过滤where.html"/>
+<link rel="prev" href="计算字段.html"/>
+<link rel="next" href="汇总.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -215,395 +215,243 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="排序order-by" class="section level1 hasAnchor" number="3">
-<h1><span class="header-section-number">第 3 章</span> 排序：ORDER BY<a href="排序order-by.html#排序order-by" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div class="sourceCode" id="cb14"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb14-1"><a href="排序order-by.html#cb14-1" tabindex="-1"></a><span class="kw">SELECT</span> prod_name</span>
-<span id="cb14-2"><a href="排序order-by.html#cb14-2" tabindex="-1"></a><span class="kw">FROM</span> Products</span>
-<span id="cb14-3"><a href="排序order-by.html#cb14-3" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> prod_name; <span class="co">-- ORDER BY 要是最后一个子句</span></span></code></pre></div>
-<div class="knitsql-table">
-<table>
-<caption><span id="tab:unnamed-chunk-14">表 3.1: </span>9 records</caption>
-<thead>
-<tr class="header">
-<th align="left">prod_name</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">12 inch teddy bear</td>
-</tr>
-<tr class="even">
-<td align="left">18 inch teddy bear</td>
-</tr>
-<tr class="odd">
-<td align="left">8 inch teddy bear</td>
-</tr>
-<tr class="even">
-<td align="left">Bird bean bag toy</td>
-</tr>
-<tr class="odd">
-<td align="left">Fish bean bag toy</td>
-</tr>
-<tr class="even">
-<td align="left">King doll</td>
-</tr>
-<tr class="odd">
-<td align="left">Queen doll</td>
-</tr>
-<tr class="even">
-<td align="left">Rabbit bean bag toy</td>
-</tr>
-<tr class="odd">
-<td align="left">Raggedy Ann</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sourceCode" id="cb15"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb15-1"><a href="排序order-by.html#cb15-1" tabindex="-1"></a><span class="kw">SELECT</span> prod_id, prod_price, prod_name</span>
-<span id="cb15-2"><a href="排序order-by.html#cb15-2" tabindex="-1"></a><span class="kw">FROM</span> Products</span>
-<span id="cb15-3"><a href="排序order-by.html#cb15-3" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> prod_price, prod_name;</span></code></pre></div>
-<div class="knitsql-table">
-<table>
-<caption><span id="tab:unnamed-chunk-15">表 3.2: </span>9 records</caption>
-<thead>
-<tr class="header">
-<th align="left">prod_id</th>
-<th align="right">prod_price</th>
-<th align="left">prod_name</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">BNBG02</td>
-<td align="right">3.49</td>
-<td align="left">Bird bean bag toy</td>
-</tr>
-<tr class="even">
-<td align="left">BNBG01</td>
-<td align="right">3.49</td>
-<td align="left">Fish bean bag toy</td>
-</tr>
-<tr class="odd">
-<td align="left">BNBG03</td>
-<td align="right">3.49</td>
-<td align="left">Rabbit bean bag toy</td>
-</tr>
-<tr class="even">
-<td align="left">RGAN01</td>
-<td align="right">4.99</td>
-<td align="left">Raggedy Ann</td>
-</tr>
-<tr class="odd">
-<td align="left">BR01</td>
-<td align="right">5.99</td>
-<td align="left">8 inch teddy bear</td>
-</tr>
-<tr class="even">
-<td align="left">BR02</td>
-<td align="right">8.99</td>
-<td align="left">12 inch teddy bear</td>
-</tr>
-<tr class="odd">
-<td align="left">RYL01</td>
-<td align="right">9.49</td>
-<td align="left">King doll</td>
-</tr>
-<tr class="even">
-<td align="left">RYL02</td>
-<td align="right">9.49</td>
-<td align="left">Queen doll</td>
-</tr>
-<tr class="odd">
-<td align="left">BR03</td>
-<td align="right">11.99</td>
-<td align="left">18 inch teddy bear</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sourceCode" id="cb16"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb16-1"><a href="排序order-by.html#cb16-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span></span>
-<span id="cb16-2"><a href="排序order-by.html#cb16-2" tabindex="-1"></a><span class="kw">FROM</span> Products</span>
-<span id="cb16-3"><a href="排序order-by.html#cb16-3" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> <span class="dv">2</span>, <span class="dv">3</span>;</span></code></pre></div>
-<div class="knitsql-table">
-<table>
-<caption><span id="tab:unnamed-chunk-16">表 3.3: </span>9 records</caption>
-<colgroup>
-<col width="6%" />
-<col width="6%" />
-<col width="17%" />
-<col width="9%" />
-<col width="59%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">prod_id</th>
-<th align="left">vend_id</th>
-<th align="left">prod_name</th>
-<th align="right">prod_price</th>
-<th align="left">prod_desc</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">BR02</td>
-<td align="left">BRS01</td>
-<td align="left">12 inch teddy bear</td>
-<td align="right">8.99</td>
-<td align="left">12 inch teddy bear, comes with cap and jacket</td>
-</tr>
-<tr class="even">
-<td align="left">BR03</td>
-<td align="left">BRS01</td>
-<td align="left">18 inch teddy bear</td>
-<td align="right">11.99</td>
-<td align="left">18 inch teddy bear, comes with cap and jacket</td>
-</tr>
-<tr class="odd">
-<td align="left">BR01</td>
-<td align="left">BRS01</td>
-<td align="left">8 inch teddy bear</td>
-<td align="right">5.99</td>
-<td align="left">8 inch teddy bear, comes with cap and jacket</td>
-</tr>
-<tr class="even">
-<td align="left">BNBG02</td>
-<td align="left">DLL01</td>
-<td align="left">Bird bean bag toy</td>
-<td align="right">3.49</td>
-<td align="left">Bird bean bag toy, eggs are not included</td>
-</tr>
-<tr class="odd">
-<td align="left">BNBG01</td>
-<td align="left">DLL01</td>
-<td align="left">Fish bean bag toy</td>
-<td align="right">3.49</td>
-<td align="left">Fish bean bag toy, complete with bean bag worms with which to feed it</td>
-</tr>
-<tr class="even">
-<td align="left">BNBG03</td>
-<td align="left">DLL01</td>
-<td align="left">Rabbit bean bag toy</td>
-<td align="right">3.49</td>
-<td align="left">Rabbit bean bag toy, comes with bean bag carrots</td>
-</tr>
-<tr class="odd">
-<td align="left">RGAN01</td>
-<td align="left">DLL01</td>
-<td align="left">Raggedy Ann</td>
-<td align="right">4.99</td>
-<td align="left">18 inch Raggedy Ann doll</td>
-</tr>
-<tr class="even">
-<td align="left">RYL01</td>
-<td align="left">FNG01</td>
-<td align="left">King doll</td>
-<td align="right">9.49</td>
-<td align="left">12 inch king doll with royal garments and crown</td>
-</tr>
-<tr class="odd">
-<td align="left">RYL02</td>
-<td align="left">FNG01</td>
-<td align="left">Queen doll</td>
-<td align="right">9.49</td>
-<td align="left">12 inch queen doll with royal garments and crown</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="desc" class="section level2 hasAnchor" number="3.1">
-<h2><span class="header-section-number">3.1</span> DESC<a href="排序order-by.html#desc" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb17"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb17-1"><a href="排序order-by.html#cb17-1" tabindex="-1"></a><span class="kw">SELECT</span> prod_id, prod_price, prod_name</span>
-<span id="cb17-2"><a href="排序order-by.html#cb17-2" tabindex="-1"></a><span class="kw">FROM</span> Products</span>
-<span id="cb17-3"><a href="排序order-by.html#cb17-3" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> prod_price <span class="kw">DESC</span>, prod_name; <span class="co">-- DESC 降序</span></span></code></pre></div>
-<div class="knitsql-table">
-<table>
-<caption><span id="tab:unnamed-chunk-17">表 3.4: </span>9 records</caption>
-<thead>
-<tr class="header">
-<th align="left">prod_id</th>
-<th align="right">prod_price</th>
-<th align="left">prod_name</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">BR03</td>
-<td align="right">11.99</td>
-<td align="left">18 inch teddy bear</td>
-</tr>
-<tr class="even">
-<td align="left">RYL01</td>
-<td align="right">9.49</td>
-<td align="left">King doll</td>
-</tr>
-<tr class="odd">
-<td align="left">RYL02</td>
-<td align="right">9.49</td>
-<td align="left">Queen doll</td>
-</tr>
-<tr class="even">
-<td align="left">BR02</td>
-<td align="right">8.99</td>
-<td align="left">12 inch teddy bear</td>
-</tr>
-<tr class="odd">
-<td align="left">BR01</td>
-<td align="right">5.99</td>
-<td align="left">8 inch teddy bear</td>
-</tr>
-<tr class="even">
-<td align="left">RGAN01</td>
-<td align="right">4.99</td>
-<td align="left">Raggedy Ann</td>
-</tr>
-<tr class="odd">
-<td align="left">BNBG02</td>
-<td align="right">3.49</td>
-<td align="left">Bird bean bag toy</td>
-</tr>
-<tr class="even">
-<td align="left">BNBG01</td>
-<td align="right">3.49</td>
-<td align="left">Fish bean bag toy</td>
-</tr>
-<tr class="odd">
-<td align="left">BNBG03</td>
-<td align="right">3.49</td>
-<td align="left">Rabbit bean bag toy</td>
-</tr>
-</tbody>
-</table>
-</div>
+<div id="函数" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">第 7 章</span> 函数<a href="函数.html#函数" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="常用函数" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> 常用函数<a href="函数.html#常用函数" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>不同DBMS有不同的函数的名称和语法，所以在使用函数时做好注释。</p>
 <ul>
-<li>在多个列上进行降序排序，必须对每一列指定 DESC 关键字</li>
+<li><p>提取字符串的组成部分：<code>SUBSTRING()</code>。</p></li>
+<li><p>数据类型转换：<code>CONVERT()</code>。</p></li>
+<li><p>取当前日期：<code>CURDATE()</code>。</p></li>
 </ul>
 </div>
-<div id="练习-1" class="section level2 hasAnchor" number="3.2">
-<h2><span class="header-section-number">3.2</span> 练习<a href="排序order-by.html#练习-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ol style="list-style-type: decimal">
-<li>编写 SQL 语句，从 Customers 中检索所有的顾客名称（cust_name），并按从 Z 到 A 的顺序显示结果。</li>
-</ol>
-<div class="sourceCode" id="cb18"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb18-1"><a href="排序order-by.html#cb18-1" tabindex="-1"></a><span class="kw">SELECT</span> cust_name</span>
-<span id="cb18-2"><a href="排序order-by.html#cb18-2" tabindex="-1"></a><span class="kw">FROM</span> Customers</span>
-<span id="cb18-3"><a href="排序order-by.html#cb18-3" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> cust_name <span class="kw">DESC</span>;</span></code></pre></div>
+<div id="文本处理函数" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> 文本处理函数<a href="函数.html#文本处理函数" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<table>
+<thead>
+<tr class="header">
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>LEFT()</code>（或使用子字符串函数）</td>
+<td>返回字符串左边的字符</td>
+</tr>
+<tr class="even">
+<td><code>LENGTH()</code>（也使用 DATALENGTH() 或 LEN()）</td>
+<td>返回字符串的长度</td>
+</tr>
+<tr class="odd">
+<td><code>LOWER()</code></td>
+<td>将字符串转换为小写</td>
+</tr>
+<tr class="even">
+<td><code>LTRIM()</code></td>
+<td>去掉字符串左边的空格</td>
+</tr>
+<tr class="odd">
+<td><code>RIGHT()</code>（或使用子字符串函数）</td>
+<td>返回字符串右边的字符</td>
+</tr>
+<tr class="even">
+<td><code>RTRIM()</code></td>
+<td>去掉字符串右边的空格</td>
+</tr>
+<tr class="odd">
+<td><code>SUBSTRING()</code></td>
+<td>提取字符串的组成部分</td>
+</tr>
+<tr class="even">
+<td><code>SOUNDEX()</code></td>
+<td>返回字符串的 SOUNDEX 值</td>
+</tr>
+<tr class="odd">
+<td><code>UPPER()</code></td>
+<td>将字符串转换为大写</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>SOUNDEX 是一个将任何文本串转换为描述其语音表示的字母数字模式的算法。</li>
+</ul>
+<div class="sourceCode" id="cb46"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb46-1"><a href="函数.html#cb46-1" tabindex="-1"></a><span class="kw">SELECT</span> cust_name, cust_contact</span>
+<span id="cb46-2"><a href="函数.html#cb46-2" tabindex="-1"></a><span class="kw">FROM</span> Customers</span>
+<span id="cb46-3"><a href="函数.html#cb46-3" tabindex="-1"></a><span class="kw">WHERE</span> <span class="fu">SOUNDEX</span>(cust_contact) <span class="op">=</span> <span class="fu">SOUNDEX</span>(<span class="st">&#39;Michael Green&#39;</span>);</span>
+<span id="cb46-4"><a href="函数.html#cb46-4" tabindex="-1"></a><span class="co">-- Michael Green 和 Michelle Green 发音相似</span></span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-18">表 3.5: </span>4 records</caption>
+<caption><span id="tab:unnamed-chunk-51">表 7.1: </span>1 records</caption>
 <thead>
 <tr class="header">
 <th align="left">cust_name</th>
+<th align="left">cust_contact</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">Village Toys</td>
+<td align="left">Kids Place</td>
+<td align="left">Michelle Green</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="日期和时间处理函数" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> 日期和时间处理函数<a href="函数.html#日期和时间处理函数" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><code>YEAR()</code> 函数从日期中提取年份。</li>
+</ul>
+<div class="sourceCode" id="cb47"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb47-1"><a href="函数.html#cb47-1" tabindex="-1"></a><span class="kw">SELECT</span> order_num, order_date</span>
+<span id="cb47-2"><a href="函数.html#cb47-2" tabindex="-1"></a><span class="kw">FROM</span> Orders</span>
+<span id="cb47-3"><a href="函数.html#cb47-3" tabindex="-1"></a><span class="kw">WHERE</span> <span class="dt">YEAR</span>(order_date) <span class="op">=</span> <span class="dv">2020</span>;</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-52">表 7.2: </span>5 records</caption>
+<thead>
+<tr class="header">
+<th align="left">order_num</th>
+<th align="left">order_date</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">20005</td>
+<td align="left">2020-05-01 00:00:00</td>
 </tr>
 <tr class="even">
-<td align="left">Kids Place</td>
+<td align="left">20006</td>
+<td align="left">2020-01-12 00:00:00</td>
 </tr>
 <tr class="odd">
-<td align="left">Fun4All</td>
+<td align="left">20007</td>
+<td align="left">2020-01-30 00:00:00</td>
 </tr>
 <tr class="even">
+<td align="left">20008</td>
+<td align="left">2020-02-03 00:00:00</td>
+</tr>
+<tr class="odd">
+<td align="left">20009</td>
+<td align="left">2020-02-08 00:00:00</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="数值处理函数" class="section level2 hasAnchor" number="7.4">
+<h2><span class="header-section-number">7.4</span> 数值处理函数<a href="函数.html#数值处理函数" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<table>
+<thead>
+<tr class="header">
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>ABS()</code></td>
+<td>返回一个数的绝对值</td>
+</tr>
+<tr class="even">
+<td><code>COS()</code></td>
+<td>返回一个角度的余弦</td>
+</tr>
+<tr class="odd">
+<td><code>EXP()</code></td>
+<td>返回一个数的指数值</td>
+</tr>
+<tr class="even">
+<td><code>PI()</code></td>
+<td>返回圆周率 π 的值</td>
+</tr>
+<tr class="odd">
+<td><code>SIN()</code></td>
+<td>返回一个角度的正弦</td>
+</tr>
+<tr class="even">
+<td><code>SQRT()</code></td>
+<td>返回一个数的平方根</td>
+</tr>
+<tr class="odd">
+<td><code>TAN()</code></td>
+<td>返回一个角度的正切</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="练习-5" class="section level2 hasAnchor" number="7.5">
+<h2><span class="header-section-number">7.5</span> 练习<a href="函数.html#练习-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>我们的商店已经上线了，正在创建顾客账户。所有用户都需要登录名，默认登录名是其名称和所在城市的组合。编写 SQL 语句，返回顾客 ID（cust_id）、顾客名称（customer_name）和登录名（user_login），其中登录名全部为大写字母，并由顾客联系人的前两个字符（cust_contact）和其所在城市的前三个字符（cust_city）组成。例如，我的登录名是 BEOAK（Ben Forta，居住在 Oak Park）。提示：需要使用函数、拼接和别名。</li>
+</ol>
+<div class="sourceCode" id="cb48"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb48-1"><a href="函数.html#cb48-1" tabindex="-1"></a><span class="kw">SELECT</span> cust_id, cust_name,</span>
+<span id="cb48-2"><a href="函数.html#cb48-2" tabindex="-1"></a>  <span class="fu">UPPER</span>( <span class="fu">CONCAT</span>(</span>
+<span id="cb48-3"><a href="函数.html#cb48-3" tabindex="-1"></a>          SUBSTRING(cust_contact, <span class="dv">1</span>, <span class="dv">2</span>),</span>
+<span id="cb48-4"><a href="函数.html#cb48-4" tabindex="-1"></a>          SUBSTRING(cust_city, <span class="dv">1</span>, <span class="dv">3</span>) </span>
+<span id="cb48-5"><a href="函数.html#cb48-5" tabindex="-1"></a>          )</span>
+<span id="cb48-6"><a href="函数.html#cb48-6" tabindex="-1"></a>        ) <span class="kw">AS</span> user_login</span>
+<span id="cb48-7"><a href="函数.html#cb48-7" tabindex="-1"></a><span class="kw">FROM</span> Customers;</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-53">表 7.3: </span>4 records</caption>
+<thead>
+<tr class="header">
+<th align="left">cust_id</th>
+<th align="left">cust_name</th>
+<th align="left">user_login</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1000000001</td>
+<td align="left">Village Toys</td>
+<td align="left">JODET</td>
+</tr>
+<tr class="even">
+<td align="left">1000000002</td>
+<td align="left">Kids Place</td>
+<td align="left">MICOL</td>
+</tr>
+<tr class="odd">
+<td align="left">1000000003</td>
 <td align="left">Fun4All</td>
+<td align="left">JIMUN</td>
+</tr>
+<tr class="even">
+<td align="left">1000000004</td>
+<td align="left">Fun4All</td>
+<td align="left">DEPHO</td>
 </tr>
 </tbody>
 </table>
 </div>
 <ol start="2" style="list-style-type: decimal">
-<li>编写 SQL 语句，从 Orders 表中检索顾客 ID（cust_id）和订单号（order_num），并先按顾客 ID 对结果进行排序，再按订单日期倒序排列。</li>
+<li>编写 SQL 语句，返回 2020 年 1 月的所有订单的订单号（order_num）和订单日期（order_date），并按订单日期排序。你应该能够根据目前已学的知识来解决此问题，但也可以开卷查阅 DBMS 文档。</li>
 </ol>
-<div class="sourceCode" id="cb19"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb19-1"><a href="排序order-by.html#cb19-1" tabindex="-1"></a><span class="kw">SELECT</span> cust_id, order_num</span>
-<span id="cb19-2"><a href="排序order-by.html#cb19-2" tabindex="-1"></a><span class="kw">FROM</span> Orders</span>
-<span id="cb19-3"><a href="排序order-by.html#cb19-3" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> cust_id, order_date <span class="kw">DESC</span>;</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb49-1"><a href="函数.html#cb49-1" tabindex="-1"></a><span class="kw">SELECT</span> order_num, order_date</span>
+<span id="cb49-2"><a href="函数.html#cb49-2" tabindex="-1"></a><span class="kw">FROM</span> Orders</span>
+<span id="cb49-3"><a href="函数.html#cb49-3" tabindex="-1"></a><span class="kw">WHERE</span> <span class="dt">YEAR</span>(order_date) <span class="op">=</span> <span class="dv">2020</span> <span class="kw">AND</span> <span class="dt">MONTH</span>(order_date) <span class="op">=</span> <span class="dv">01</span></span>
+<span id="cb49-4"><a href="函数.html#cb49-4" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> order_date;</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-19">表 3.6: </span>5 records</caption>
+<caption><span id="tab:unnamed-chunk-54">表 7.4: </span>2 records</caption>
 <thead>
 <tr class="header">
-<th align="left">cust_id</th>
-<th align="right">order_num</th>
+<th align="left">order_num</th>
+<th align="left">order_date</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">1000000001</td>
-<td align="right">20005</td>
+<td align="left">20006</td>
+<td align="left">2020-01-12 00:00:00</td>
 </tr>
 <tr class="even">
-<td align="left">1000000001</td>
-<td align="right">20009</td>
-</tr>
-<tr class="odd">
-<td align="left">1000000003</td>
-<td align="right">20006</td>
-</tr>
-<tr class="even">
-<td align="left">1000000004</td>
-<td align="right">20007</td>
-</tr>
-<tr class="odd">
-<td align="left">1000000005</td>
-<td align="right">20008</td>
-</tr>
-</tbody>
-</table>
-</div>
-<ol start="3" style="list-style-type: decimal">
-<li>显然，我们的虚拟商店更喜欢出售比较贵的物品，而且这类物品有很多。编写 SQL 语句，显示 OrderItems 表中的数量和价格（item_price），并按数量由多到少、价格由高到低排序。</li>
-</ol>
-<div class="sourceCode" id="cb20"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb20-1"><a href="排序order-by.html#cb20-1" tabindex="-1"></a><span class="kw">SELECT</span> order_num, item_price</span>
-<span id="cb20-2"><a href="排序order-by.html#cb20-2" tabindex="-1"></a><span class="kw">FROM</span> OrderItems</span>
-<span id="cb20-3"><a href="排序order-by.html#cb20-3" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> order_num <span class="kw">DESC</span>, item_price <span class="kw">DESC</span>;</span></code></pre></div>
-<div class="knitsql-table">
-<table>
-<caption><span id="tab:unnamed-chunk-20">表 3.7: </span>Displaying records 1 - 10</caption>
-<thead>
-<tr class="header">
-<th align="right">order_num</th>
-<th align="right">item_price</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">20009</td>
-<td align="right">2.49</td>
-</tr>
-<tr class="even">
-<td align="right">20009</td>
-<td align="right">2.49</td>
-</tr>
-<tr class="odd">
-<td align="right">20009</td>
-<td align="right">2.49</td>
-</tr>
-<tr class="even">
-<td align="right">20008</td>
-<td align="right">11.99</td>
-</tr>
-<tr class="odd">
-<td align="right">20008</td>
-<td align="right">4.99</td>
-</tr>
-<tr class="even">
-<td align="right">20008</td>
-<td align="right">3.49</td>
-</tr>
-<tr class="odd">
-<td align="right">20008</td>
-<td align="right">3.49</td>
-</tr>
-<tr class="even">
-<td align="right">20008</td>
-<td align="right">3.49</td>
-</tr>
-<tr class="odd">
-<td align="right">20007</td>
-<td align="right">11.49</td>
-</tr>
-<tr class="even">
-<td align="right">20007</td>
-<td align="right">4.49</td>
+<td align="left">20007</td>
+<td align="left">2020-01-30 00:00:00</td>
 </tr>
 </tbody>
 </table>
@@ -616,8 +464,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="检索select.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="过滤where.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="计算字段.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="汇总.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -648,7 +496,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/WXYS1209/SQL_Note/02-排序.Rmd",
+"link": "https://github.com/WXYS1209/SQL_Note/06-函数.Rmd",
 "text": "Edit"
 },
 "history": {

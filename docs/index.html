@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>SQL Learning Note</title>
+  <title>MySQL 学习笔记</title>
   <meta name="description" content="This is a notebook for learning SQL with MySQL." />
   <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="SQL Learning Note" />
+  <meta property="og:title" content="MySQL 学习笔记" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a notebook for learning SQL with MySQL." />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="SQL Learning Note" />
+  <meta name="twitter:title" content="MySQL 学习笔记" />
   
   <meta name="twitter:description" content="This is a notebook for learning SQL with MySQL." />
   
@@ -30,7 +30,7 @@
   
   
 
-<link rel="next" href="检索-select.html"/>
+<link rel="next" href="检索select.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -135,15 +135,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
+<li><a href="./">MySQL 学习笔记</a></li>
+
+<li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 基础</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#参考"><i class="fa fa-check"></i><b>1.1</b> 参考</a></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="检索-select.html"><a href="检索-select.html"><i class="fa fa-check"></i><b>2</b> 检索: SELECT</a>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#参考"><i class="fa fa-check"></i><b>1.1</b> 参考</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="检索-select.html"><a href="检索-select.html#distinct"><i class="fa fa-check"></i><b>2.1</b> DISTINCT</a></li>
-<li class="chapter" data-level="2.2" data-path="检索-select.html"><a href="检索-select.html#limit"><i class="fa fa-check"></i><b>2.2</b> LIMIT</a></li>
-<li class="chapter" data-level="2.3" data-path="检索-select.html"><a href="检索-select.html#练习"><i class="fa fa-check"></i><b>2.3</b> 练习</a></li>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#asdf"><i class="fa fa-check"></i><b>1.1.1</b> asdf</a></li>
+<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#asdfadsf"><i class="fa fa-check"></i><b>1.1.2</b> asdfadsf</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="检索select.html"><a href="检索select.html"><i class="fa fa-check"></i><b>2</b> 检索：SELECT</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="检索select.html"><a href="检索select.html#distinct"><i class="fa fa-check"></i><b>2.1</b> DISTINCT</a></li>
+<li class="chapter" data-level="2.2" data-path="检索select.html"><a href="检索select.html#limit"><i class="fa fa-check"></i><b>2.2</b> LIMIT</a></li>
+<li class="chapter" data-level="2.3" data-path="检索select.html"><a href="检索select.html#练习"><i class="fa fa-check"></i><b>2.3</b> 练习</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="排序order-by.html"><a href="排序order-by.html"><i class="fa fa-check"></i><b>3</b> 排序：ORDER BY</a>
 <ul>
@@ -156,7 +163,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2" data-path="过滤where.html"><a href="过滤where.html#高级过滤"><i class="fa fa-check"></i><b>4.2</b> 高级过滤</a></li>
 <li class="chapter" data-level="4.3" data-path="过滤where.html"><a href="过滤where.html#练习-2"><i class="fa fa-check"></i><b>4.3</b> 练习</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="通配符like.html"><a href="通配符like.html"><i class="fa fa-check"></i><b>5</b> 通配符：LIKE</a></li>
+<li class="chapter" data-level="5" data-path="通配符like.html"><a href="通配符like.html"><i class="fa fa-check"></i><b>5</b> 通配符：LIKE</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="通配符like.html"><a href="通配符like.html#section"><i class="fa fa-check"></i><b>5.1</b> %</a></li>
+<li class="chapter" data-level="5.2" data-path="通配符like.html"><a href="通配符like.html#section-1"><i class="fa fa-check"></i><b>5.2</b> _</a></li>
+<li class="chapter" data-level="5.3" data-path="通配符like.html"><a href="通配符like.html#section-2"><i class="fa fa-check"></i><b>5.3</b> [ ]</a></li>
+<li class="chapter" data-level="5.4" data-path="通配符like.html"><a href="通配符like.html#练习-3"><i class="fa fa-check"></i><b>5.4</b> 练习</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="计算字段.html"><a href="计算字段.html"><i class="fa fa-check"></i><b>6</b> 计算字段</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="计算字段.html"><a href="计算字段.html#拼接concat"><i class="fa fa-check"></i><b>6.1</b> 拼接：Concat</a></li>
+<li class="chapter" data-level="6.2" data-path="计算字段.html"><a href="计算字段.html#算数计算"><i class="fa fa-check"></i><b>6.2</b> 算数计算</a></li>
+<li class="chapter" data-level="6.3" data-path="计算字段.html"><a href="计算字段.html#练习-4"><i class="fa fa-check"></i><b>6.3</b> 练习</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="函数.html"><a href="函数.html"><i class="fa fa-check"></i><b>7</b> 函数</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="函数.html"><a href="函数.html#常用函数"><i class="fa fa-check"></i><b>7.1</b> 常用函数</a></li>
+<li class="chapter" data-level="7.2" data-path="函数.html"><a href="函数.html#文本处理函数"><i class="fa fa-check"></i><b>7.2</b> 文本处理函数</a></li>
+<li class="chapter" data-level="7.3" data-path="函数.html"><a href="函数.html#日期和时间处理函数"><i class="fa fa-check"></i><b>7.3</b> 日期和时间处理函数</a></li>
+<li class="chapter" data-level="7.4" data-path="函数.html"><a href="函数.html#数值处理函数"><i class="fa fa-check"></i><b>7.4</b> 数值处理函数</a></li>
+<li class="chapter" data-level="7.5" data-path="函数.html"><a href="函数.html#练习-5"><i class="fa fa-check"></i><b>7.5</b> 练习</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="汇总.html"><a href="汇总.html"><i class="fa fa-check"></i><b>8</b> 汇总</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="汇总.html"><a href="汇总.html#聚集函数"><i class="fa fa-check"></i><b>8.1</b> 聚集函数</a></li>
+<li class="chapter" data-level="8.2" data-path="汇总.html"><a href="汇总.html#聚集不同值"><i class="fa fa-check"></i><b>8.2</b> 聚集不同值</a></li>
+<li class="chapter" data-level="8.3" data-path="汇总.html"><a href="汇总.html#组合运用"><i class="fa fa-check"></i><b>8.3</b> 组合运用</a></li>
+<li class="chapter" data-level="8.4" data-path="汇总.html"><a href="汇总.html#练习-6"><i class="fa fa-check"></i><b>8.4</b> 练习</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="汇总-1.html"><a href="汇总-1.html"><i class="fa fa-check"></i><b>9</b> 汇总</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="汇总-1.html"><a href="汇总-1.html#聚集函数-1"><i class="fa fa-check"></i><b>9.1</b> 聚集函数</a></li>
+<li class="chapter" data-level="9.2" data-path="汇总-1.html"><a href="汇总-1.html#聚集不同值-1"><i class="fa fa-check"></i><b>9.2</b> 聚集不同值</a></li>
+<li class="chapter" data-level="9.3" data-path="汇总-1.html"><a href="汇总-1.html#组合运用-1"><i class="fa fa-check"></i><b>9.3</b> 组合运用</a></li>
+<li class="chapter" data-level="9.4" data-path="汇总-1.html"><a href="汇总-1.html#练习-7"><i class="fa fa-check"></i><b>9.4</b> 练习</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -166,7 +207,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">SQL Learning Note</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">MySQL 学习笔记</a>
           </h1>
         </div>
 
@@ -175,11 +216,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="header">
-<h1 class="title">SQL Learning Note</h1>
+<h1 class="title">MySQL 学习笔记</h1>
 <p class="author"><em>Xiaoyang Wang</em></p>
 </div>
 <div id="基础" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">Chapter 1</span> 基础<a href="index.html#基础" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<h1><span class="header-section-number">第 1 章</span> 基础<a href="index.html#基础" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <ul>
 <li><p>不区分大小写：对 SQL 关键字使用大写，而对列名和表名使用小写，但是表名、列名和值可能有所不同</p></li>
 <li><p>所有空格都被忽略</p></li>
@@ -189,7 +230,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb2"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb2-1"><a href="index.html#cb2-1" tabindex="-1"></a>SHOW DATABASES;</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-2">Table 1.1: </span>5 records</caption>
+<caption><span id="tab:unnamed-chunk-2">表 1.1: </span>5 records</caption>
 <thead>
 <tr class="header">
 <th align="left">Database</th>
@@ -218,7 +259,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb4"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb4-1"><a href="index.html#cb4-1" tabindex="-1"></a>SHOW <span class="kw">TABLES</span>;</span></code></pre></div>
 <div class="knitsql-table">
 <table>
-<caption><span id="tab:unnamed-chunk-4">Table 1.2: </span>5 records</caption>
+<caption><span id="tab:unnamed-chunk-4">表 1.2: </span>5 records</caption>
 <thead>
 <tr class="header">
 <th align="left">Tables_in_learn</th>
@@ -245,12 +286,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div class="sourceCode" id="cb5"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb5-1"><a href="index.html#cb5-1" tabindex="-1"></a><span class="kw">DESC</span> table_name;</span>
 <span id="cb5-2"><a href="index.html#cb5-2" tabindex="-1"></a><span class="co">-- SHOW COLUMNS FROM table_name;</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="index.html#cb6-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">y=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-6"></span>
+<img src="_main_files/figure-html/unnamed-chunk-6-1.png" alt="aa" width="672" />
+<p class="caption">
+Figure 1.1: aa
+</p>
+</div>
 <div id="参考" class="section level2 hasAnchor" number="1.1">
 <h2><span class="header-section-number">1.1</span> 参考<a href="index.html#参考" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="asdf" class="section level3 hasAnchor" number="1.1.1">
+<h3><span class="header-section-number">1.1.1</span> asdf<a href="index.html#asdf" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>asdf</p>
+</div>
+<div id="asdfadsf" class="section level3 hasAnchor" number="1.1.2">
+<h3><span class="header-section-number">1.1.2</span> asdfadsf<a href="index.html#asdfadsf" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>adfadfasd</p>
+<div id="aaaa" class="section level4 hasAnchor" number="1.1.2.1">
+<h4><span class="header-section-number">1.1.2.1</span> aaaa<a href="index.html#aaaa" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>aaa</p>
+</div>
+<div id="bbb" class="section level4 hasAnchor" number="1.1.2.2">
+<h4><span class="header-section-number">1.1.2.2</span> bbb<a href="index.html#bbb" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>bbb</p>
 <p>作者：图灵教育</p>
 <p>链接：<a href="https://leetcode.cn/leetbook/read/sam-teach-yourself-sql-in-5-minutes-fifth-edition/p6bccd/" class="uri">https://leetcode.cn/leetbook/read/sam-teach-yourself-sql-in-5-minutes-fifth-edition/p6bccd/</a></p>
 <p>来源：力扣（LeetCode）</p>
 
+</div>
+</div>
 </div>
 </div>
             </section>
@@ -259,7 +323,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 
-<a href="检索-select.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="检索select.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -274,9 +338,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
+"github": true,
+"facebook": false,
+"twitter": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
@@ -290,8 +354,8 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": null,
-"text": null
+"link": "https://github.com/WXYS1209/SQL_Note/index.Rmd",
+"text": "Edit"
 },
 "history": {
 "link": null,
@@ -307,7 +371,8 @@ gitbook.start({
 "options": null
 },
 "toc": {
-"collapse": "subsection"
+"collapse": "section",
+"scroll_highlight": true
 }
 });
 });

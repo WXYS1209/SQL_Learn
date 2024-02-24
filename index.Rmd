@@ -1,12 +1,23 @@
 ---
-title: "SQL Learning Note"
+title: "MySQL 学习笔记"
 author: "Xiaoyang Wang"
 site: bookdown::bookdown_site
 documentclass: book
 description: |
   This is a notebook for learning SQL with MySQL.
 output:
-  bookdown::gitbook: default
+  bookdown::gitbook:
+    config:
+      toc:
+        scroll_highlight: yes
+        collapse: section
+        before: |
+          <li><a href="./">MySQL 学习笔记</a></li>
+      edit: https://github.com/WXYS1209/SQL_Note/%s
+      sharing:
+        github: yes
+        facebook: no
+        twitter: no
   # bookdown::pdf_book: default
 ---
 
@@ -53,7 +64,24 @@ DESC table_name;
 -- SHOW COLUMNS FROM table_name;
 ```
 
+```{r fig.cap="aa"}
+plot(x=1:10, y=1:10)
+```
+
+
 ## 参考
+### asdf
+
+asdf
+
+### asdfadsf
+adfadfasd
+
+#### aaaa
+aaa
+
+#### bbb
+bbb
 
 作者：图灵教育
 
