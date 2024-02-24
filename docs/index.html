@@ -30,7 +30,7 @@
   
   
 
-<link rel="next" href="检索数据.html"/>
+<link rel="next" href="检索-select.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -135,14 +135,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 基础</a></li>
-<li class="chapter" data-level="2" data-path="检索数据.html"><a href="检索数据.html"><i class="fa fa-check"></i><b>2</b> 检索数据</a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 基础</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="检索数据.html"><a href="检索数据.html#select"><i class="fa fa-check"></i><b>2.1</b> SELECT</a></li>
-<li class="chapter" data-level="2.2" data-path="检索数据.html"><a href="检索数据.html#distinct"><i class="fa fa-check"></i><b>2.2</b> DISTINCT</a></li>
-<li class="chapter" data-level="2.3" data-path="检索数据.html"><a href="检索数据.html#limit"><i class="fa fa-check"></i><b>2.3</b> LIMIT</a></li>
-<li class="chapter" data-level="2.4" data-path="检索数据.html"><a href="检索数据.html#练习"><i class="fa fa-check"></i><b>2.4</b> 练习</a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#参考"><i class="fa fa-check"></i><b>1.1</b> 参考</a></li>
 </ul></li>
+<li class="chapter" data-level="2" data-path="检索-select.html"><a href="检索-select.html"><i class="fa fa-check"></i><b>2</b> 检索: SELECT</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="检索-select.html"><a href="检索-select.html#distinct"><i class="fa fa-check"></i><b>2.1</b> DISTINCT</a></li>
+<li class="chapter" data-level="2.2" data-path="检索-select.html"><a href="检索-select.html#limit"><i class="fa fa-check"></i><b>2.2</b> LIMIT</a></li>
+<li class="chapter" data-level="2.3" data-path="检索-select.html"><a href="检索-select.html#练习"><i class="fa fa-check"></i><b>2.3</b> 练习</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="排序order-by.html"><a href="排序order-by.html"><i class="fa fa-check"></i><b>3</b> 排序：ORDER BY</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="排序order-by.html"><a href="排序order-by.html#desc"><i class="fa fa-check"></i><b>3.1</b> DESC</a></li>
+<li class="chapter" data-level="3.2" data-path="排序order-by.html"><a href="排序order-by.html#练习-1"><i class="fa fa-check"></i><b>3.2</b> 练习</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="过滤where.html"><a href="过滤where.html"><i class="fa fa-check"></i><b>4</b> 过滤：WHERE</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="过滤where.html"><a href="过滤where.html#一些操作符"><i class="fa fa-check"></i><b>4.1</b> 一些操作符</a></li>
+<li class="chapter" data-level="4.2" data-path="过滤where.html"><a href="过滤where.html#高级过滤"><i class="fa fa-check"></i><b>4.2</b> 高级过滤</a></li>
+<li class="chapter" data-level="4.3" data-path="过滤where.html"><a href="过滤where.html#练习-2"><i class="fa fa-check"></i><b>4.3</b> 练习</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="通配符like.html"><a href="通配符like.html"><i class="fa fa-check"></i><b>5</b> 通配符：LIKE</a></li>
 </ul>
 
       </nav>
@@ -229,7 +243,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 </div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb5-1"><a href="index.html#cb5-1" tabindex="-1"></a><span class="kw">DESC</span> table_name;</span>
+<span id="cb5-2"><a href="index.html#cb5-2" tabindex="-1"></a><span class="co">-- SHOW COLUMNS FROM table_name;</span></span></code></pre></div>
+<div id="参考" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> 参考<a href="index.html#参考" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>作者：图灵教育</p>
+<p>链接：<a href="https://leetcode.cn/leetbook/read/sam-teach-yourself-sql-in-5-minutes-fifth-edition/p6bccd/" class="uri">https://leetcode.cn/leetbook/read/sam-teach-yourself-sql-in-5-minutes-fifth-edition/p6bccd/</a></p>
+<p>来源：力扣（LeetCode）</p>
 
+</div>
 </div>
             </section>
 
@@ -237,7 +259,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 
-<a href="检索数据.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="检索-select.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

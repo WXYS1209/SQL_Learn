@@ -24,6 +24,7 @@ knitr::opts_chunk$set(# fig.path = 'figures/',
                       connection = conn)
 ```
 
+
 # 基础
 
 - 不区分大小写：对 SQL 关键字使用大写，而对列名和表名使用小写，但是表名、列名和值可能有所不同
@@ -43,8 +44,19 @@ SHOW DATABASES;
 USE LEARN;
 ```
 
-
 ```{sql, connection = conn}
 SHOW TABLES;
 ```
 
+```{sql, connection = conn, eval = F}
+DESC table_name;
+-- SHOW COLUMNS FROM table_name;
+```
+
+## 参考
+
+作者：图灵教育
+
+链接：https://leetcode.cn/leetbook/read/sam-teach-yourself-sql-in-5-minutes-fifth-edition/p6bccd/
+
+来源：力扣（LeetCode）

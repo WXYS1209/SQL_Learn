@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 过滤：WHERE | SQL Learning Note</title>
+  <meta name="description" content="This is a notebook for learning SQL with MySQL." />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 过滤：WHERE | SQL Learning Note" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is a notebook for learning SQL with MySQL." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 过滤：WHERE | SQL Learning Note" />
+  
+  <meta name="twitter:description" content="This is a notebook for learning SQL with MySQL." />
+  
+
+<meta name="author" content="Xiaoyang Wang" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="过滤where.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 基础</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#参考"><i class="fa fa-check"></i><b>1.1</b> 参考</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="检索-select.html"><a href="检索-select.html"><i class="fa fa-check"></i><b>2</b> 检索: SELECT</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="检索-select.html"><a href="检索-select.html#distinct"><i class="fa fa-check"></i><b>2.1</b> DISTINCT</a></li>
+<li class="chapter" data-level="2.2" data-path="检索-select.html"><a href="检索-select.html#limit"><i class="fa fa-check"></i><b>2.2</b> LIMIT</a></li>
+<li class="chapter" data-level="2.3" data-path="检索-select.html"><a href="检索-select.html#练习"><i class="fa fa-check"></i><b>2.3</b> 练习</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="排序order-by.html"><a href="排序order-by.html"><i class="fa fa-check"></i><b>3</b> 排序：ORDER BY</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="排序order-by.html"><a href="排序order-by.html#desc"><i class="fa fa-check"></i><b>3.1</b> DESC</a></li>
+<li class="chapter" data-level="3.2" data-path="排序order-by.html"><a href="排序order-by.html#练习-1"><i class="fa fa-check"></i><b>3.2</b> 练习</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="过滤where.html"><a href="过滤where.html"><i class="fa fa-check"></i><b>4</b> 过滤：WHERE</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="过滤where.html"><a href="过滤where.html#一些操作符"><i class="fa fa-check"></i><b>4.1</b> 一些操作符</a></li>
+<li class="chapter" data-level="4.2" data-path="过滤where.html"><a href="过滤where.html#高级过滤"><i class="fa fa-check"></i><b>4.2</b> 高级过滤</a></li>
+<li class="chapter" data-level="4.3" data-path="过滤where.html"><a href="过滤where.html#练习-2"><i class="fa fa-check"></i><b>4.3</b> 练习</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="过滤where-1.html"><a href="过滤where-1.html"><i class="fa fa-check"></i><b>5</b> 过滤：WHERE</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="过滤where-1.html"><a href="过滤where-1.html#一些操作符-1"><i class="fa fa-check"></i><b>5.1</b> 一些操作符</a></li>
+<li class="chapter" data-level="5.2" data-path="过滤where-1.html"><a href="过滤where-1.html#高级过滤-1"><i class="fa fa-check"></i><b>5.2</b> 高级过滤</a></li>
+<li class="chapter" data-level="5.3" data-path="过滤where-1.html"><a href="过滤where-1.html#练习-3"><i class="fa fa-check"></i><b>5.3</b> 练习</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">SQL Learning Note</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="过滤where-1" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Chapter 5</span> 过滤：WHERE<a href="过滤where-1.html#过滤where-1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div class="sourceCode" id="cb35"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb35-1"><a href="过滤where-1.html#cb35-1" tabindex="-1"></a><span class="kw">SELECT</span> prod_name, prod_price</span>
+<span id="cb35-2"><a href="过滤where-1.html#cb35-2" tabindex="-1"></a><span class="kw">FROM</span> Products</span>
+<span id="cb35-3"><a href="过滤where-1.html#cb35-3" tabindex="-1"></a><span class="kw">WHERE</span> prod_price <span class="op">=</span> <span class="fl">3.49</span>;</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-35">Table 5.1: </span>3 records</caption>
+<thead>
+<tr class="header">
+<th align="left">prod_name</th>
+<th align="right">prod_price</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Fish bean bag toy</td>
+<td align="right">3.49</td>
+</tr>
+<tr class="even">
+<td align="left">Bird bean bag toy</td>
+<td align="right">3.49</td>
+</tr>
+<tr class="odd">
+<td align="left">Rabbit bean bag toy</td>
+<td align="right">3.49</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="一些操作符-1" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> 一些操作符<a href="过滤where-1.html#一些操作符-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><code>BETWEEN</code>：在指定的两个值之间。
+匹配范围中所有的值，包括指定的开始值和结束值。</li>
+</ul>
+<div class="sourceCode" id="cb36"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb36-1"><a href="过滤where-1.html#cb36-1" tabindex="-1"></a><span class="kw">SELECT</span> prod_name, prod_price</span>
+<span id="cb36-2"><a href="过滤where-1.html#cb36-2" tabindex="-1"></a><span class="kw">FROM</span> Products</span>
+<span id="cb36-3"><a href="过滤where-1.html#cb36-3" tabindex="-1"></a><span class="kw">WHERE</span> prod_price <span class="kw">BETWEEN</span> <span class="dv">5</span> <span class="kw">AND</span> <span class="dv">10</span>;</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-36">Table 5.2: </span>4 records</caption>
+<thead>
+<tr class="header">
+<th align="left">prod_name</th>
+<th align="right">prod_price</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">8 inch teddy bear</td>
+<td align="right">5.99</td>
+</tr>
+<tr class="even">
+<td align="left">12 inch teddy bear</td>
+<td align="right">8.99</td>
+</tr>
+<tr class="odd">
+<td align="left">King doll</td>
+<td align="right">9.49</td>
+</tr>
+<tr class="even">
+<td align="left">Queen doll</td>
+<td align="right">9.49</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><code>IS NULL</code>: 为 NULL 值。
+通过过滤选择不包含指定值的所有行时，你可能希望返回含 NULL 值的行。但是这做不到。因为 NULL 比较特殊，所以在进行匹配过滤或非匹配过滤时，不会返回这些结果。</li>
+</ul>
+<div class="sourceCode" id="cb37"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb37-1"><a href="过滤where-1.html#cb37-1" tabindex="-1"></a><span class="kw">SELECT</span> cust_name</span>
+<span id="cb37-2"><a href="过滤where-1.html#cb37-2" tabindex="-1"></a><span class="kw">FROM</span> Customers</span>
+<span id="cb37-3"><a href="过滤where-1.html#cb37-3" tabindex="-1"></a><span class="kw">WHERE</span> cust_email <span class="kw">IS</span> <span class="kw">NULL</span>;</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-37">Table 5.3: </span>1 records</caption>
+<thead>
+<tr class="header">
+<th align="left">cust_name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Kids Place</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>其余与R类似。</li>
+</ul>
+</div>
+<div id="高级过滤-1" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> 高级过滤<a href="过滤where-1.html#高级过滤-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><code>AND</code></li>
+</ul>
+<div class="sourceCode" id="cb38"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb38-1"><a href="过滤where-1.html#cb38-1" tabindex="-1"></a><span class="kw">SELECT</span> prod_id, prod_price, prod_name</span>
+<span id="cb38-2"><a href="过滤where-1.html#cb38-2" tabindex="-1"></a><span class="kw">FROM</span> Products</span>
+<span id="cb38-3"><a href="过滤where-1.html#cb38-3" tabindex="-1"></a><span class="kw">WHERE</span> vend_id <span class="op">=</span> <span class="st">&#39;DLL01&#39;</span> <span class="kw">AND</span> prod_price <span class="op">&lt;=</span> <span class="dv">4</span>;</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-38">Table 5.4: </span>3 records</caption>
+<thead>
+<tr class="header">
+<th align="left">prod_id</th>
+<th align="right">prod_price</th>
+<th align="left">prod_name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">BNBG01</td>
+<td align="right">3.49</td>
+<td align="left">Fish bean bag toy</td>
+</tr>
+<tr class="even">
+<td align="left">BNBG02</td>
+<td align="right">3.49</td>
+<td align="left">Bird bean bag toy</td>
+</tr>
+<tr class="odd">
+<td align="left">BNBG03</td>
+<td align="right">3.49</td>
+<td align="left">Rabbit bean bag toy</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><code>OR</code></li>
+</ul>
+<div class="sourceCode" id="cb39"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb39-1"><a href="过滤where-1.html#cb39-1" tabindex="-1"></a><span class="kw">SELECT</span> prod_id, prod_price, prod_name</span>
+<span id="cb39-2"><a href="过滤where-1.html#cb39-2" tabindex="-1"></a><span class="kw">FROM</span> Products</span>
+<span id="cb39-3"><a href="过滤where-1.html#cb39-3" tabindex="-1"></a><span class="kw">WHERE</span> vend_id <span class="op">=</span> <span class="st">&#39;DLL01&#39;</span> <span class="kw">OR</span> vend_id <span class="op">=</span> <span class="st">&#39;BRS01&#39;</span>;</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-39">Table 5.5: </span>7 records</caption>
+<thead>
+<tr class="header">
+<th align="left">prod_id</th>
+<th align="right">prod_price</th>
+<th align="left">prod_name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">BR01</td>
+<td align="right">5.99</td>
+<td align="left">8 inch teddy bear</td>
+</tr>
+<tr class="even">
+<td align="left">BR02</td>
+<td align="right">8.99</td>
+<td align="left">12 inch teddy bear</td>
+</tr>
+<tr class="odd">
+<td align="left">BR03</td>
+<td align="right">11.99</td>
+<td align="left">18 inch teddy bear</td>
+</tr>
+<tr class="even">
+<td align="left">BNBG01</td>
+<td align="right">3.49</td>
+<td align="left">Fish bean bag toy</td>
+</tr>
+<tr class="odd">
+<td align="left">BNBG02</td>
+<td align="right">3.49</td>
+<td align="left">Bird bean bag toy</td>
+</tr>
+<tr class="even">
+<td align="left">BNBG03</td>
+<td align="right">3.49</td>
+<td align="left">Rabbit bean bag toy</td>
+</tr>
+<tr class="odd">
+<td align="left">RGAN01</td>
+<td align="right">4.99</td>
+<td align="left">Raggedy Ann</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb40-1"><a href="过滤where-1.html#cb40-1" tabindex="-1"></a><span class="kw">SELECT</span> prod_name, prod_price</span>
+<span id="cb40-2"><a href="过滤where-1.html#cb40-2" tabindex="-1"></a><span class="kw">FROM</span> Products</span>
+<span id="cb40-3"><a href="过滤where-1.html#cb40-3" tabindex="-1"></a><span class="kw">WHERE</span> (vend_id <span class="op">=</span> <span class="st">&#39;DLL01&#39;</span> <span class="kw">OR</span> vend_id <span class="op">=</span> <span class="st">&#39;BRS01&#39;</span>)</span>
+<span id="cb40-4"><a href="过滤where-1.html#cb40-4" tabindex="-1"></a><span class="co">-- WHERE vend_id = &#39;DLL01&#39; OR vend_id = &#39;BRS01&#39; 会先 AND 后 OR</span></span>
+<span id="cb40-5"><a href="过滤where-1.html#cb40-5" tabindex="-1"></a>      <span class="kw">AND</span> prod_price <span class="op">&gt;=</span> <span class="dv">10</span>;</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-40">Table 5.6: </span>1 records</caption>
+<thead>
+<tr class="header">
+<th align="left">prod_name</th>
+<th align="right">prod_price</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">18 inch teddy bear</td>
+<td align="right">11.99</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><code>IN</code>
+<ul>
+<li>IN 操作符一般比一组 OR 操作符执行得更快。</li>
+<li>IN 的最大优点是可以包含其他 SELECT 语句，能够更动态地建立 WHERE 子句。</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb41"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb41-1"><a href="过滤where-1.html#cb41-1" tabindex="-1"></a><span class="kw">SELECT</span> prod_name, prod_price</span>
+<span id="cb41-2"><a href="过滤where-1.html#cb41-2" tabindex="-1"></a><span class="kw">FROM</span> Products</span>
+<span id="cb41-3"><a href="过滤where-1.html#cb41-3" tabindex="-1"></a><span class="kw">WHERE</span> vend_id  <span class="kw">IN</span> (<span class="st">&#39;DLL01&#39;</span>,<span class="st">&#39;BRS01&#39;</span>)</span>
+<span id="cb41-4"><a href="过滤where-1.html#cb41-4" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> prod_name;</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-41">Table 5.7: </span>7 records</caption>
+<thead>
+<tr class="header">
+<th align="left">prod_name</th>
+<th align="right">prod_price</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">12 inch teddy bear</td>
+<td align="right">8.99</td>
+</tr>
+<tr class="even">
+<td align="left">18 inch teddy bear</td>
+<td align="right">11.99</td>
+</tr>
+<tr class="odd">
+<td align="left">8 inch teddy bear</td>
+<td align="right">5.99</td>
+</tr>
+<tr class="even">
+<td align="left">Bird bean bag toy</td>
+<td align="right">3.49</td>
+</tr>
+<tr class="odd">
+<td align="left">Fish bean bag toy</td>
+<td align="right">3.49</td>
+</tr>
+<tr class="even">
+<td align="left">Rabbit bean bag toy</td>
+<td align="right">3.49</td>
+</tr>
+<tr class="odd">
+<td align="left">Raggedy Ann</td>
+<td align="right">4.99</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><code>NOT</code></li>
+</ul>
+<div class="sourceCode" id="cb42"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb42-1"><a href="过滤where-1.html#cb42-1" tabindex="-1"></a><span class="kw">SELECT</span> prod_name</span>
+<span id="cb42-2"><a href="过滤where-1.html#cb42-2" tabindex="-1"></a><span class="kw">FROM</span> Products</span>
+<span id="cb42-3"><a href="过滤where-1.html#cb42-3" tabindex="-1"></a><span class="kw">WHERE</span> <span class="kw">NOT</span> vend_id <span class="kw">IN</span> (<span class="st">&#39;DLL01&#39;</span>,<span class="st">&#39;BRS01&#39;</span>)</span>
+<span id="cb42-4"><a href="过滤where-1.html#cb42-4" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> prod_name;</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-42">Table 5.8: </span>2 records</caption>
+<thead>
+<tr class="header">
+<th align="left">prod_name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">King doll</td>
+</tr>
+<tr class="even">
+<td align="left">Queen doll</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="练习-3" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> 练习<a href="过滤where-1.html#练习-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>编写 SQL 语句，从 Products 表中检索产品 ID（prod_id）和产品名称（prod_name），只返回价格为 9.49 美元的产品。</li>
+</ol>
+<div class="sourceCode" id="cb43"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb43-1"><a href="过滤where-1.html#cb43-1" tabindex="-1"></a><span class="kw">SELECT</span> prod_id, prod_name</span>
+<span id="cb43-2"><a href="过滤where-1.html#cb43-2" tabindex="-1"></a><span class="kw">FROM</span> Products</span>
+<span id="cb43-3"><a href="过滤where-1.html#cb43-3" tabindex="-1"></a><span class="kw">WHERE</span> prod_price <span class="op">=</span> <span class="fl">9.49</span>;</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-43">Table 5.9: </span>2 records</caption>
+<thead>
+<tr class="header">
+<th align="left">prod_id</th>
+<th align="left">prod_name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">RYL01</td>
+<td align="left">King doll</td>
+</tr>
+<tr class="even">
+<td align="left">RYL02</td>
+<td align="left">Queen doll</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ol start="2" style="list-style-type: decimal">
+<li>编写 SQL 语句，从 Products 表中检索产品 ID（prod_id）和产品名称（prod_name），只返回价格为 9 美元或更高的产品。</li>
+</ol>
+<div class="sourceCode" id="cb44"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb44-1"><a href="过滤where-1.html#cb44-1" tabindex="-1"></a><span class="kw">SELECT</span> prod_id, prod_name</span>
+<span id="cb44-2"><a href="过滤where-1.html#cb44-2" tabindex="-1"></a><span class="kw">FROM</span> Products</span>
+<span id="cb44-3"><a href="过滤where-1.html#cb44-3" tabindex="-1"></a><span class="kw">WHERE</span> prod_price <span class="op">&gt;=</span> <span class="dv">9</span>;</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-44">Table 5.10: </span>3 records</caption>
+<thead>
+<tr class="header">
+<th align="left">prod_id</th>
+<th align="left">prod_name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">BR03</td>
+<td align="left">18 inch teddy bear</td>
+</tr>
+<tr class="even">
+<td align="left">RYL01</td>
+<td align="left">King doll</td>
+</tr>
+<tr class="odd">
+<td align="left">RYL02</td>
+<td align="left">Queen doll</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ol start="3" style="list-style-type: decimal">
+<li>编写 SQL 语句，从 OrderItems 表中检索出所有不同订单号（order_num），其中包含 100 个或更多的产品。</li>
+</ol>
+<div class="sourceCode" id="cb45"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb45-1"><a href="过滤where-1.html#cb45-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="kw">DISTINCT</span> order_num</span>
+<span id="cb45-2"><a href="过滤where-1.html#cb45-2" tabindex="-1"></a><span class="kw">FROM</span> OrderItems</span>
+<span id="cb45-3"><a href="过滤where-1.html#cb45-3" tabindex="-1"></a><span class="kw">WHERE</span> quantity <span class="op">&gt;=</span> <span class="dv">100</span>;</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-45">Table 5.11: </span>3 records</caption>
+<thead>
+<tr class="header">
+<th align="right">order_num</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">20005</td>
+</tr>
+<tr class="even">
+<td align="right">20007</td>
+</tr>
+<tr class="odd">
+<td align="right">20009</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ol start="4" style="list-style-type: decimal">
+<li>编写 SQL 语句，返回 Products 表中所有价格在 3 美元到 6 美元之间的产品的名称（prod_name）和价格（prod_price），然后按价格对结果进行排序。</li>
+</ol>
+<div class="sourceCode" id="cb46"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb46-1"><a href="过滤where-1.html#cb46-1" tabindex="-1"></a><span class="kw">SELECT</span> prod_name, prod_price</span>
+<span id="cb46-2"><a href="过滤where-1.html#cb46-2" tabindex="-1"></a><span class="kw">FROM</span> Products</span>
+<span id="cb46-3"><a href="过滤where-1.html#cb46-3" tabindex="-1"></a><span class="kw">WHERE</span> prod_price <span class="kw">BETWEEN</span> <span class="dv">3</span> <span class="kw">AND</span> <span class="dv">6</span></span>
+<span id="cb46-4"><a href="过滤where-1.html#cb46-4" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> prod_price;</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-46">Table 5.12: </span>5 records</caption>
+<thead>
+<tr class="header">
+<th align="left">prod_name</th>
+<th align="right">prod_price</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Fish bean bag toy</td>
+<td align="right">3.49</td>
+</tr>
+<tr class="even">
+<td align="left">Bird bean bag toy</td>
+<td align="right">3.49</td>
+</tr>
+<tr class="odd">
+<td align="left">Rabbit bean bag toy</td>
+<td align="right">3.49</td>
+</tr>
+<tr class="even">
+<td align="left">Raggedy Ann</td>
+<td align="right">4.99</td>
+</tr>
+<tr class="odd">
+<td align="left">8 inch teddy bear</td>
+<td align="right">5.99</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ol start="5" style="list-style-type: decimal">
+<li>编写 SQL 语句，从 Vendors 表中检索供应商名称（vend_name），仅返回加利福尼亚州的供应商（这需要按国家 [USA] 和州 [CA] 进行过滤，没准其他国家也存在一个加利福尼亚州）。提示：过滤器需要匹配字符串。</li>
+</ol>
+<div class="sourceCode" id="cb47"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb47-1"><a href="过滤where-1.html#cb47-1" tabindex="-1"></a><span class="kw">SELECT</span> vend_name </span>
+<span id="cb47-2"><a href="过滤where-1.html#cb47-2" tabindex="-1"></a><span class="kw">FROM</span> Vendors</span>
+<span id="cb47-3"><a href="过滤where-1.html#cb47-3" tabindex="-1"></a><span class="kw">WHERE</span> vend_country <span class="op">=</span> <span class="st">&#39;USA&#39;</span> <span class="kw">AND</span> </span>
+<span id="cb47-4"><a href="过滤where-1.html#cb47-4" tabindex="-1"></a>  vend_state <span class="op">=</span> <span class="st">&#39;CA&#39;</span>;</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-47">Table 5.13: </span>1 records</caption>
+<thead>
+<tr class="header">
+<th align="left">vend_name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Doll House Inc.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ol start="6" style="list-style-type: decimal">
+<li>编写 SQL 语句，查找所有至少订购了总量 100 个的 BR01、BR02 或 BR03 的订单。你需要返回 OrderItems 表的订单号（order_num）、产品 ID（prod_id）和数量，并按产品 ID 和数量进行过滤。</li>
+</ol>
+<div class="sourceCode" id="cb48"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb48-1"><a href="过滤where-1.html#cb48-1" tabindex="-1"></a><span class="kw">SELECT</span> order_num, prod_id, quantity</span>
+<span id="cb48-2"><a href="过滤where-1.html#cb48-2" tabindex="-1"></a><span class="kw">FROM</span> OrderItems</span>
+<span id="cb48-3"><a href="过滤where-1.html#cb48-3" tabindex="-1"></a><span class="kw">WHERE</span> prod_id <span class="kw">IN</span> (<span class="st">&#39;BR01&#39;</span>, <span class="st">&#39;BR02&#39;</span>, <span class="st">&#39;BR03&#39;</span>) <span class="kw">AND</span> </span>
+<span id="cb48-4"><a href="过滤where-1.html#cb48-4" tabindex="-1"></a>  quantity <span class="op">&gt;=</span> <span class="dv">100</span>;</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-48">Table 5.14: </span>2 records</caption>
+<thead>
+<tr class="header">
+<th align="right">order_num</th>
+<th align="left">prod_id</th>
+<th align="right">quantity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">20005</td>
+<td align="left">BR01</td>
+<td align="right">100</td>
+</tr>
+<tr class="even">
+<td align="right">20005</td>
+<td align="left">BR03</td>
+<td align="right">100</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ol start="7" style="list-style-type: decimal">
+<li>编写 SQL 语句，返回所有价格在 3 美元到 6 美元之间的产品的名称（prod_name）和价格（prod_price）。使用 AND，然后按价格对结果进行排序。</li>
+</ol>
+<div class="sourceCode" id="cb49"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb49-1"><a href="过滤where-1.html#cb49-1" tabindex="-1"></a><span class="kw">SELECT</span> prod_name, prod_price</span>
+<span id="cb49-2"><a href="过滤where-1.html#cb49-2" tabindex="-1"></a><span class="kw">FROM</span> Products</span>
+<span id="cb49-3"><a href="过滤where-1.html#cb49-3" tabindex="-1"></a><span class="kw">WHERE</span> prod_price <span class="op">&gt;=</span> <span class="dv">3</span> <span class="kw">AND</span> prod_price <span class="op">&lt;=</span> <span class="dv">6</span></span>
+<span id="cb49-4"><a href="过滤where-1.html#cb49-4" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> prod_price;</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-49">Table 5.15: </span>5 records</caption>
+<thead>
+<tr class="header">
+<th align="left">prod_name</th>
+<th align="right">prod_price</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Fish bean bag toy</td>
+<td align="right">3.49</td>
+</tr>
+<tr class="even">
+<td align="left">Bird bean bag toy</td>
+<td align="right">3.49</td>
+</tr>
+<tr class="odd">
+<td align="left">Rabbit bean bag toy</td>
+<td align="right">3.49</td>
+</tr>
+<tr class="even">
+<td align="left">Raggedy Ann</td>
+<td align="right">4.99</td>
+</tr>
+<tr class="odd">
+<td align="left">8 inch teddy bear</td>
+<td align="right">5.99</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="过滤where.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

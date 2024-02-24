@@ -1,0 +1,56 @@
+# 排序：ORDER BY
+
+```{sql, connection = conn}
+SELECT prod_name
+FROM Products
+ORDER BY prod_name; -- ORDER BY 要是最后一个子句
+```
+
+```{sql, connection = conn}
+SELECT prod_id, prod_price, prod_name
+FROM Products
+ORDER BY prod_price, prod_name;
+```
+
+```{sql, connection = conn}
+SELECT *
+FROM Products
+ORDER BY 2, 3;
+```
+
+## DESC
+```{sql, connection = conn}
+SELECT prod_id, prod_price, prod_name
+FROM Products
+ORDER BY prod_price DESC, prod_name; -- DESC 降序
+```
+
+- 在多个列上进行降序排序，必须对每一列指定 DESC 关键字
+
+## 练习
+1. 编写 SQL 语句，从 Customers 中检索所有的顾客名称（cust_name），并按从 Z 到 A 的顺序显示结果。
+
+```{sql, connection = conn}
+SELECT cust_name
+FROM Customers
+ORDER BY cust_name DESC;
+```
+
+2. 编写 SQL 语句，从 Orders 表中检索顾客 ID（cust_id）和订单号（order_num），并先按顾客 ID 对结果进行排序，再按订单日期倒序排列。
+
+
+
+```{sql, connection = conn}
+SELECT cust_id, order_num
+FROM Orders
+ORDER BY cust_id, order_date DESC;
+```
+
+3. 显然，我们的虚拟商店更喜欢出售比较贵的物品，而且这类物品有很多。编写 SQL 语句，显示 OrderItems 表中的数量和价格（item_price），并按数量由多到少、价格由高到低排序。
+
+```{sql, connection = conn}
+SELECT order_num, item_price
+FROM OrderItems
+ORDER BY order_num DESC, item_price DESC;
+```
+

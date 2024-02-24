@@ -1,0 +1,136 @@
+# 过滤：WHERE
+
+```{sql, connection = conn}
+SELECT prod_name, prod_price
+FROM Products
+WHERE prod_price = 3.49;
+```
+
+## 一些操作符
+- `BETWEEN`：在指定的两个值之间。
+  匹配范围中所有的值，包括指定的开始值和结束值。
+
+```{sql, connection = conn}
+SELECT prod_name, prod_price
+FROM Products
+WHERE prod_price BETWEEN 5 AND 10;
+```
+
+- `IS NULL`: 为 NULL 值。
+  通过过滤选择不包含指定值的所有行时，你可能希望返回含 NULL 值的行。但是这做不到。因为 NULL 比较特殊，所以在进行匹配过滤或非匹配过滤时，不会返回这些结果。
+
+
+```{sql, connection = conn}
+SELECT cust_name
+FROM Customers
+WHERE cust_email IS NULL;
+```
+
+- 其余与R类似。
+
+## 高级过滤
+
+- `AND`
+```{sql, connection = conn}
+SELECT prod_id, prod_price, prod_name
+FROM Products
+WHERE vend_id = 'DLL01' AND prod_price <= 4;
+```
+
+- `OR`
+```{sql, connection = conn}
+SELECT prod_id, prod_price, prod_name
+FROM Products
+WHERE vend_id = 'DLL01' OR vend_id = 'BRS01';
+```
+
+
+```{sql, connection = conn}
+SELECT prod_name, prod_price
+FROM Products
+WHERE (vend_id = 'DLL01' OR vend_id = 'BRS01')
+-- WHERE vend_id = 'DLL01' OR vend_id = 'BRS01' 会先 AND 后 OR
+      AND prod_price >= 10;
+```
+
+- `IN`
+  - IN 操作符一般比一组 OR 操作符执行得更快。
+  - IN 的最大优点是可以包含其他 SELECT 语句，能够更动态地建立 WHERE 子句。
+  
+```{sql, connection = conn}
+SELECT prod_name, prod_price
+FROM Products
+WHERE vend_id  IN ('DLL01','BRS01')
+ORDER BY prod_name;
+```
+
+- `NOT`
+
+```{sql, connection = conn}
+SELECT prod_name
+FROM Products
+WHERE NOT vend_id IN ('DLL01','BRS01')
+ORDER BY prod_name;
+```
+
+## 练习
+1. 编写 SQL 语句，从 Products 表中检索产品 ID（prod_id）和产品名称（prod_name），只返回价格为 9.49 美元的产品。
+
+```{sql, connection = conn}
+SELECT prod_id, prod_name
+FROM Products
+WHERE prod_price = 9.49;
+```
+
+2. 编写 SQL 语句，从 Products 表中检索产品 ID（prod_id）和产品名称（prod_name），只返回价格为 9 美元或更高的产品。
+
+```{sql, connection = conn}
+SELECT prod_id, prod_name
+FROM Products
+WHERE prod_price >= 9;
+```
+
+3. 编写 SQL 语句，从 OrderItems 表中检索出所有不同订单号（order_num），其中包含 100 个或更多的产品。
+
+```{sql, connection = conn}
+SELECT DISTINCT order_num
+FROM OrderItems
+WHERE quantity >= 100;
+```
+
+4. 编写 SQL 语句，返回 Products 表中所有价格在 3 美元到 6 美元之间的产品的名称（prod_name）和价格（prod_price），然后按价格对结果进行排序。
+
+```{sql, connection = conn}
+SELECT prod_name, prod_price
+FROM Products
+WHERE prod_price BETWEEN 3 AND 6
+ORDER BY prod_price;
+```
+
+5. 编写 SQL 语句，从 Vendors 表中检索供应商名称（vend_name），仅返回加利福尼亚州的供应商（这需要按国家 [USA] 和州 [CA] 进行过滤，没准其他国家也存在一个加利福尼亚州）。提示：过滤器需要匹配字符串。
+
+```{sql, connection = conn}
+SELECT vend_name 
+FROM Vendors
+WHERE vend_country = 'USA' AND 
+  vend_state = 'CA';
+```
+
+6. 编写 SQL 语句，查找所有至少订购了总量 100 个的 BR01、BR02 或 BR03 的订单。你需要返回 OrderItems 表的订单号（order_num）、产品 ID（prod_id）和数量，并按产品 ID 和数量进行过滤。
+
+```{sql, connection = conn}
+SELECT order_num, prod_id, quantity
+FROM OrderItems
+WHERE prod_id IN ('BR01', 'BR02', 'BR03') AND 
+  quantity >= 100;
+```
+
+7. 编写 SQL 语句，返回所有价格在 3 美元到 6 美元之间的产品的名称（prod_name）和价格（prod_price）。使用 AND，然后按价格对结果进行排序。
+
+```{sql, connection = conn}
+SELECT prod_name, prod_price
+FROM Products
+WHERE prod_price >= 3 AND prod_price <= 6
+ORDER BY prod_price;
+```
+
