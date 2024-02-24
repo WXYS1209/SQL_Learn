@@ -1,0 +1,50 @@
+---
+title: "SQL Learning Note"
+author: "Xiaoyang Wang"
+site: bookdown::bookdown_site
+documentclass: book
+description: |
+  This is a notebook for learning SQL with MySQL.
+output:
+  bookdown::gitbook: default
+  # bookdown::pdf_book: default
+---
+
+```{r global_options, include=FALSE}
+library(DBI)
+library(RMySQL)
+conn <- dbConnect(RMySQL::MySQL(), host = "localhost", user = "root", password = "Wxyang0916!", dbname = "Learn")
+
+knitr::opts_chunk$set(# fig.path = 'figures/',
+                      echo = T, 
+                      warning = FALSE, 
+                      message = FALSE, 
+                      fig.align = "center",
+                      fig.pos = "h",
+                      connection = conn)
+```
+
+# 基础
+
+- 不区分大小写：对 SQL 关键字使用大写，而对列名和表名使用小写，但是表名、列名和值可能有所不同
+
+- 所有空格都被忽略
+
+```{sql, connection = conn, eval=F}
+CREATE DATABASE mydatabase;
+DROP DATABASE IF EXISTS mydatabase;
+```
+
+```{sql, connection = conn}
+SHOW DATABASES;
+```
+
+```{sql, connection = conn}
+USE LEARN;
+```
+
+
+```{sql, connection = conn}
+SHOW TABLES;
+```
+
